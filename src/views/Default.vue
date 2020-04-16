@@ -4,23 +4,35 @@
       <v-list>
         <v-list-group>
           <template v-slot:activator>
-            <v-list-item-title>Users</v-list-item-title>
+            <v-list-item-title>{{ cityt }}</v-list-item-title>
           </template>
-          <v-list-item v-for="i in city" :key="i" link>
+          <v-list-item
+            v-for="i in city"
+            :key="i"
+            @click="
+              () => {
+                cityt = `${i}`;
+              }
+            "
+          >
             <v-list-title v-text="i"></v-list-title>
           </v-list-item>
         </v-list-group>
       </v-list>
     </v-card>
   </div>
+  <!-- 怎麼復原
+   -->
+   <!-- 再add一次？ -->
 </template>
-
+<!--你們先復原剛剛的編輯->
 <script>
 export default {
   data: () => ({
     alldata: {},
     city: [],
     test: "",
+    cityt: "your city",
   }),
   methods: {},
   created() {
