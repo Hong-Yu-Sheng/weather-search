@@ -53,7 +53,7 @@
                               depressed
                               block
                               rounded
-                              color="grey lighten-2"
+                              color="grey lighten-3"
                               @click="
                                 () => {
                                   cityt = i;
@@ -108,7 +108,7 @@
                             <v-btn
                               rounded
                               depressed
-                              color="grey lighten-2"
+                              color="grey lighten-3"
                               block
                               @click="
                                 () => {
