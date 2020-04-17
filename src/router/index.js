@@ -1,7 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
-import Default from "../views/Default.vue";
+import Test from "../views/test.vue";
+import Tt from "../views/tt.vue";
 
 Vue.use(VueRouter);
 
@@ -12,9 +13,13 @@ const routes = [
     component: Home
   },
   {
-    path: "/default",
-    name: "default",
-    component: Default
+    path: "/test",
+    name: "test",
+    component: Test
+  },{
+    path: "/tt",
+    name: "tt",
+    component: Tt
   }
 
 ];
