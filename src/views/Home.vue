@@ -13,8 +13,8 @@
           <v-row>
             <v-col>
               <div>
-                <p class="display-3 text-center">data</p>
-                <p class="display-3 text-center">workplace</p>
+                <p class="display-3 text-center font-weight-bold">data</p>
+                <p class="display-3 text-center font-weight-bold">workplace</p>
               </div>
             </v-col>
           </v-row>
@@ -32,8 +32,8 @@
           <v-row>
             <v-col>
               <div>
-                <p class="display-3 text-center">template</p>
-                <p class="display-3 text-center">workplace</p>
+                <p class="display-3 text-center font-weight-bold">template</p>
+                <p class="display-3 text-center font-weight-bold">workplace</p>
               </div>
             </v-col>
           </v-row>

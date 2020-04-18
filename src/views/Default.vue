@@ -1,87 +1,13 @@
 <template>
-  <v-container fill-height>
-    <v-row class="ma-auto">
-      <v-col cols="3">
-        <v-card flat>
-          <v-menu offset-y flat v-model="ex">
-            <template v-slot:activator="{ on }">
-              <v-btn
-                depressed
-                outlined
-                class="text-white"
-                color="grey darken-1"
-                v-on="on"
-                width="400px"
-                height="50"
-              >
-                {{ cityt }}
-              </v-btn>
-            </template>
-            <v-card width="600px">
-              <v-row class="px-5 py-2">
-                <v-col class="pa-2" cols="2" v-for="i in city" :key="i">
-                  <v-btn
-                    depressed
-                    @click="
-                      () => {
-                        cityt = i;
-                        city_area = 'your area';
-                        ex = false;
-                        ex2 = true;
-                      }
-                    "
-                  >
-                    {{ i }}
-                  </v-btn>
-                </v-col>
-              </v-row>
-            </v-card>
-          </v-menu>
-        </v-card>
-      </v-col>
-      <v-col cols="3">
-        <v-card flat>
-          <v-menu offset-y flat v-model="ex2">
-            <template v-slot:activator="{ on }">
-              <v-btn
-                depressed
-                outlined
-                class="text-white"
-                color="grey darken-1"
-                v-on="on"
-                width="400px"
-                height="50"
-              >
-                {{ city_area }}
-              </v-btn>
-            </template>
-            <v-card width="600px">
-              <v-row class="px-5 py-2">
-                <v-col class="pa-2" v-for="i in alldata[cityt]" :key="i">
-                  <v-btn
-                    depressed
-                    @click="
-                      () => {
-                        city_area = `${i}`;
-                        ex2 = false;
-                      }
-                    "
-                    >{{ i }}
-                  </v-btn>
-                </v-col>
-              </v-row>
-            </v-card>
-          </v-menu>
-        </v-card>
-      </v-col>
-    </v-row>
-  </v-container>
+  <div>
+    <span>{{ alldata }}</span>
+  </div>
 </template>
 
 <script>
 export default {
   data: () => ({
-    alldata: [],
+    alldata: {},
     city: [],
     test: "",
     cityt: "your city",
@@ -100,6 +26,12 @@ export default {
     //       {"name":"福隆","Temp":"26.2","Humd":"0.55"}
     //     ]
     //   },
+    //
+    //       {"name":"",},
+    //       {"name":"",}
+    //
+    //
+    //    }
     //   {
     //     "City":"新竹市",
     //     "City_Area":[
@@ -115,6 +47,9 @@ export default {
     //   },
     // ]
     //取得天氣API資料
+    //
+    //     新北市:{福山:["Temp":"22.5","Humd":"0.71"],福隆:["Temp":"26.2","Humd":"0.55"]}
+    //
     let api =
       "https://opendata.cwb.gov.tw/api/v1/rest/datastore/O-A0001-001?Authorization=rdec-key-123-45678-011121314";
     return this.axios.get(api).then((x) => {
@@ -123,19 +58,30 @@ export default {
         if (
           x.data.records.location[i].parameter[0].parameterValue in this.alldata
         ) {
-          let tmp = this.alldata[
-            `${x.data.records.location[i].parameter[0].parameterValue}`
-          ];
-          tmp.push(`${x.data.records.location[i].locationName}`);
+          let tmpobj = {};
+          let tmp = Object.keys(x.data.records.location[i].weatherElement);
+          for (let t = 0; t < tmp.length; t++) {
+            tmpobj[
+              `${x.data.records.location[i].weatherElement[t].elementName}`
+            ] = `${x.data.records.location[i].weatherElement[t].elementValue}`;
+          }
           this.alldata[
             `${x.data.records.location[i].parameter[0].parameterValue}`
-          ] = tmp;
-          console.log(this.alldata);
+          ][`${x.data.records.location[i].locationName}`] = tmpobj;
         } else {
-          this.alldata.push({"City":`${x.data.records.location[i].parameter[0].parameterValue}`});
-          // this.alldata[
-          //   `${x.data.records.location[i].parameter[0].parameterValue}`
-          // ] = [`${x.data.records.location[i].locationName}`];
+          let tmpobj = {};
+          let tmp = Object.keys(x.data.records.location[i].weatherElement);
+          for (let t = 0; t < tmp.length; t++) {
+            tmpobj[
+              `${x.data.records.location[i].weatherElement[t].elementName}`
+            ] = `${x.data.records.location[i].weatherElement[t].elementValue}`;
+          }
+          this.alldata[
+            `${x.data.records.location[i].parameter[0].parameterValue}`
+          ] = {};
+          this.alldata[
+            `${x.data.records.location[i].parameter[0].parameterValue}`
+          ][`${x.data.records.location[i].locationName}`] = tmpobj;
         }
       }
       console.log(this.alldata);

@@ -14,9 +14,9 @@
               </v-card>
             </v-col>
             <v-col cols="12" class="pa-0">
-              <v-row class="ma-auto" justify="center">
-                <v-col cols="1"> </v-col>
-                <v-col cols="5" class="d-flex justify-end px-0">
+              <v-row class="ma-auto justify-end">
+                <v-col cols="3"></v-col>
+                <v-col cols="4">
                   <v-card flat>
                     <v-menu
                       offset-y
@@ -30,9 +30,9 @@
                           rounded
                           depressed
                           outlined
+                          block
                           class="grey--text text--darken-3 justify-between"
                           v-on="on"
-                          width="200"
                           height="50"
                         >
                           <v-icon>
@@ -58,6 +58,7 @@
                                 () => {
                                   cityt = i;
                                   city_area = 'your area';
+                                  area = Object.keys(alldata[cityt]);
                                   ex = false;
                                   ex2 = true;
                                   appear = true;
@@ -72,7 +73,7 @@
                     </v-menu>
                   </v-card>
                 </v-col>
-                <v-col cols="5">
+                <v-col cols="5" class="pl-10">
                   <v-card flat>
                     <v-menu
                       offset-y
@@ -97,11 +98,11 @@
                           <span>{{ city_area }}</span>
                         </v-btn>
                       </template>
-                      <v-card flat width="600px" max-height="300" v-if="appear">
-                        <v-row class="px-5 py-2 d-flex">
+                      <v-card flat max-height="300" max-width="600" v-if="ex2">
+                        <v-row class="px-5 py-2">
                           <v-col
                             class="pa-2"
-                            v-for="i in alldata[cityt]"
+                            v-for="i in area"
                             :key="i"
                             cols="3"
                           >
@@ -129,7 +130,7 @@
           </v-row>
         </v-container>
       </v-col>
-      <v-col cols="6"></v-col>
+      <v-col cols="6"> </v-col>
     </v-row>
   </v-container>
 </template>
@@ -142,6 +143,7 @@ export default {
   data: () => ({
     alldata: {},
     city: [],
+    area: [],
     test: "",
     cityt: "your city",
     city_area: "your area",
@@ -160,19 +162,30 @@ export default {
         if (
           x.data.records.location[i].parameter[0].parameterValue in this.alldata
         ) {
-          let tmp = this.alldata[
-            `${x.data.records.location[i].parameter[0].parameterValue}`
-          ];
-
-          tmp.push(`${x.data.records.location[i].locationName}`);
+          let tmpobj = {};
+          let tmp = Object.keys(x.data.records.location[i].weatherElement);
+          for (let t = 0; t < tmp.length; t++) {
+            tmpobj[
+              `${x.data.records.location[i].weatherElement[t].elementName}`
+            ] = `${x.data.records.location[i].weatherElement[t].elementValue}`;
+          }
           this.alldata[
             `${x.data.records.location[i].parameter[0].parameterValue}`
-          ] = tmp;
-          console.log(this.alldata);
+          ][`${x.data.records.location[i].locationName}`] = tmpobj;
         } else {
+          let tmpobj = {};
+          let tmp = Object.keys(x.data.records.location[i].weatherElement);
+          for (let t = 0; t < tmp.length; t++) {
+            tmpobj[
+              `${x.data.records.location[i].weatherElement[t].elementName}`
+            ] = `${x.data.records.location[i].weatherElement[t].elementValue}`;
+          }
           this.alldata[
             `${x.data.records.location[i].parameter[0].parameterValue}`
-          ] = [`${x.data.records.location[i].locationName}`];
+          ] = {};
+          this.alldata[
+            `${x.data.records.location[i].parameter[0].parameterValue}`
+          ][`${x.data.records.location[i].locationName}`] = tmpobj;
         }
       }
       console.log(this.alldata);
