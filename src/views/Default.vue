@@ -17,38 +17,9 @@ export default {
   }),
   methods: {},
   created() {
-    // 資料結構範例
-    // [
-    //   {
-    //     "City":"新北市",
-    //     "City_Area":[
-    //       {"name":"福山","Temp":"22.5","Humd":"0.71"},
-    //       {"name":"福隆","Temp":"26.2","Humd":"0.55"}
-    //     ]
-    //   },
-    //
-    //       {"name":"",},
-    //       {"name":"",}
-    //
-    //
-    //    }
-    //   {
-    //     "City":"新竹市",
-    //     "City_Area":[
-    //       {"name":"香山","Temp":"23.4","Humd":"0.32"}
-    //     ]
-    //   },
-    //   {
-    //     "City":"台南市",
-    //     "City_Area":[
-    //       {"name":"安平","Temp":"23.4","Humd":"0.32"},
-    //       {"name":"七股","Temp":"27.4","Humd":"0.22"}
-    //     ]
-    //   },
-    // ]
     //取得天氣API資料
     //
-    //     新北市:{福山:["Temp":"22.5","Humd":"0.71"],福隆:["Temp":"26.2","Humd":"0.55"]}
+    // {"新北市":{"福山":{"Temp":"22.5","Humd":"0.71"},"福隆":{"Temp":"26.2","Humd":"0.55"}}}
     //
     let api =
       "https://opendata.cwb.gov.tw/api/v1/rest/datastore/O-A0001-001?Authorization=rdec-key-123-45678-011121314";
