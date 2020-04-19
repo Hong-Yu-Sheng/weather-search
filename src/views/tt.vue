@@ -61,7 +61,7 @@
                                   area = Object.keys(alldata[cityt]);
                                   ex = false;
                                   ex2 = true;
-                                  appear = true;
+                                  appear = false;
                                 }
                               "
                             >
@@ -115,6 +115,8 @@
                                 () => {
                                   city_area = `${i}`;
                                   ex2 = false;
+                                  appear = true;
+                                  set();
                                 }
                               "
                               >{{ i }}
@@ -130,7 +132,73 @@
           </v-row>
         </v-container>
       </v-col>
-      <v-col cols="6"> </v-col>
+      <v-col cols="6" class="d-flex align-center">
+        <v-slide-x-reverse-transition hide-on-leave>
+          <v-container fluid fill-height class="pa-0" v-show=appear>
+            <v-row class="align-self-stretch">
+              <v-col cols="12" class="d-flex align-center ma-0 pa-0">
+                <v-row>
+                  <v-col cols="12"></v-col>
+                  <v-col cols="12"></v-col>
+                  <v-col cols="12" class="d-flex justify-center display-3">
+                    {{ cityt }}
+                  </v-col>
+                  <v-col> </v-col>
+                  <v-col cols="12" class="d-flex justify-center display-3">{{
+                    city_area
+                  }}</v-col>
+                </v-row>
+              </v-col>
+              <v-col cols="12">
+                <v-row>
+                  <v-col cols="5" class="d-flex justify-end">
+                    <v-icon>
+                      mdi-thermometer-chevron-up
+                    </v-icon>
+                  </v-col>
+                  <v-col cols="2">
+                    <span>
+                      max_temp :
+                    </span>
+                  </v-col>
+                  <v-col cols="2" class="d-flex justify-start">
+                    <span>{{ d_tx }}</span>
+                  </v-col>
+                  <v-col cols="3"> </v-col>
+                  <v-col cols="5" class="d-flex justify-end">
+                    <v-icon>
+                      mdi-thermometer-chevron-down
+                    </v-icon>
+                  </v-col>
+                  <v-col cols="2">
+                    <span>
+                      min_temp :
+                    </span>
+                  </v-col>
+                  <v-col cols="2" class="d-flex justify-start">
+                    <span>{{ d_tn }}</span>
+                  </v-col>
+                  <v-col cols="3"> </v-col>
+                  <v-col cols="5" class="d-flex justify-end">
+                    <v-icon>
+                      mdi-water-outline
+                    </v-icon>
+                  </v-col>
+                  <v-col cols="2">
+                    <span>
+                      rv_humd :
+                    </span>
+                  </v-col>
+                  <v-col cols="2" class="d-flex justify-start">
+                    <span>{{ humd }}</span>
+                  </v-col>
+                  <v-col cols="3"> </v-col>
+                </v-row>
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-slide-x-reverse-transition>
+      </v-col>
     </v-row>
   </v-container>
 </template>
@@ -150,8 +218,17 @@ export default {
     appear: false,
     ex: false,
     ex2: false,
+    humd: 0,
+    d_tx: 0,
+    d_tn: 0,
   }),
-  methods: {},
+  methods: {
+    set() {
+      this.humd = this.alldata[`${this.cityt}`][`${this.city_area}`].HUMD;
+      this.d_tx = this.alldata[`${this.cityt}`][`${this.city_area}`].D_TX;
+      this.d_tn = this.alldata[`${this.cityt}`][`${this.city_area}`].D_TN;
+    },
+  },
   created() {
     //取得天氣API資料
     let api =

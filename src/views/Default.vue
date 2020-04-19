@@ -1,6 +1,6 @@
 <template>
   <div>
-    <span>{{ alldata }}</span>
+    <span>{{ alldata["新北市"] }}</span>
   </div>
 </template>
 
