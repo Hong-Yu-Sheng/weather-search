@@ -130,7 +130,34 @@
           </v-row>
         </v-container>
       </v-col>
-      <v-col cols="6"> </v-col>
+      <v-col cols="6">
+        <v-container fluid fill-height class="pa-0 ma-0">
+          <v-row class="ma-2 pa-2 justify-center">
+            <v-col cols="6" class="px-10">
+              <v-card flat>
+                <p
+                  v-if="
+                    alldata[cityt] != undefined &&
+                      alldata[cityt][city_area] != undefined
+                  "
+                  class="display-3 .font-weight-thin text-sm-right grey--text text--darken-2"
+                >
+                  溫度：{{ alldata[cityt][city_area]["TEMP"] }}
+                </p>
+                <p
+                  v-if="
+                    alldata[cityt] != undefined &&
+                      alldata[cityt][city_area] != undefined
+                  "
+                  class="display-3 .font-weight-thin text-sm-right grey--text text--darken-2"
+                >
+                  濕度：{{ alldata[cityt][city_area]["HUMD"] }}
+                </p>
+              </v-card>
+            </v-col>
+          </v-row>
+        </v-container>
+      </v-col>
     </v-row>
   </v-container>
 </template>
