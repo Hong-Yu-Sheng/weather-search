@@ -134,7 +134,7 @@
       </v-col>
       <v-col cols="6" class="d-flex align-center">
         <v-slide-x-reverse-transition hide-on-leave>
-          <v-container fluid fill-height class="pa-0" v-show=appear>
+          <v-container fluid fill-height class="pa-0" v-show="appear">
             <v-row class="align-self-stretch">
               <v-col cols="12" class="d-flex align-center ma-0 pa-0">
                 <v-row>
@@ -220,20 +220,20 @@ export default {
     ex2: false,
     humd: 0,
     d_tx: 0,
-    d_tn: 0,
+    d_tn: 0
   }),
   methods: {
     set() {
       this.humd = this.alldata[`${this.cityt}`][`${this.city_area}`].HUMD;
       this.d_tx = this.alldata[`${this.cityt}`][`${this.city_area}`].D_TX;
       this.d_tn = this.alldata[`${this.cityt}`][`${this.city_area}`].D_TN;
-    },
+    }
   },
   created() {
     //取得天氣API資料
     let api =
       "https://opendata.cwb.gov.tw/api/v1/rest/datastore/O-A0001-001?Authorization=rdec-key-123-45678-011121314";
-    return this.axios.get(api).then((x) => {
+    return this.axios.get(api).then(x => {
       let num = Object.keys(x.data.records.location);
       for (let i = 0; i < num.length; i++) {
         if (
@@ -268,6 +268,6 @@ export default {
       console.log(this.alldata);
       this.city = Object.keys(this.alldata);
     });
-  },
+  }
 };
 </script>
