@@ -2,7 +2,7 @@
   <nav>
     <v-app-bar flat app color="grey lighten-1" height="65px">
       <v-toolbar-title>
-        <img src="https://imgur.com/h0IeP9S" />
+        <img src="/logo2.png" width="200px" />
       </v-toolbar-title>
       <v-spacer> </v-spacer>
     </v-app-bar>
@@ -13,6 +13,6 @@
 export default {
   data() {
     return {};
-  }
+  },
 };
 </script>
