@@ -27,7 +27,6 @@ const routes = [
     name: "tmp",
     component: Tmp
   }
-
 ];
 
 const router = new VueRouter({
