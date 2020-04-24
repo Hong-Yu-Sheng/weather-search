@@ -2,7 +2,7 @@
   <v-container fluid fill-height class="pa-0">
     <v-row class="align-self-stretch">
       <v-col cols="12" md="6" class="ma-0 pa-0 d-flex align-center">
-        <v-card flat class="pa-0 d-flex align-center" min-height="700">
+        <v-card flat style="max-width: 900px" class="pa-0 d-flex align-center" min-height="600">
           <v-container fill-height class="pa-0 ma-0">
             <v-row class="ma-0 pa-0 d-flex align-self-stretch align-center">
               <v-col cols="12" class="align-self-end px-10">
