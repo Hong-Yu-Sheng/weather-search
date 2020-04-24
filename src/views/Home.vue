@@ -24,7 +24,7 @@
         <v-card
           color="purple"
           depressed
-          to="/tt"
+          to="/tmp"
           height="500"
           width="700"
           class="d-flex justify-center align-center"
