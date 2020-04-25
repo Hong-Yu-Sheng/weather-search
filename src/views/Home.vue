@@ -5,7 +5,7 @@
         <v-card
           color="blue"
           depressed
-          to="/default"
+          to="/tt"
           height="500"
           width="700"
           class="d-flex justify-center align-center"
