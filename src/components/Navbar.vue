@@ -5,6 +5,9 @@
         <img src="/logo2.png" width="200px" />
       </v-toolbar-title>
       <v-spacer> </v-spacer>
+      <v-btn :to="{ name: 'tt' }">處理資料</v-btn>
+      <v-btn class="mx-5" :to="{ name: 'Home' }">回主頁面</v-btn>
+      <v-btn :to="{ name: 'tmp' }">實際操作</v-btn>
     </v-app-bar>
   </nav>
 </template>
