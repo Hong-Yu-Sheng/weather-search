@@ -168,11 +168,11 @@
                 <v-col cols="12"></v-col>
                 <v-col cols="12"></v-col>
                 <v-col cols="12"></v-col>
-                <v-col cols="11" class="d-flex justify-end display-3">
+                <v-col cols="11" class="d-flex justify-end fontbig-3">
                   {{ cityt }}
                 </v-col>
                 <v-col cols="1"></v-col>
-                <v-col cols="11" class="d-flex justify-end display-1">
+                <v-col cols="11" class="d-flex justify-end fontbig-1">
                   {{ city_area }}
                 </v-col>
                 <v-col cols="1"></v-col>
