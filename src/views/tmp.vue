@@ -6,11 +6,11 @@
           flat
           max-width="900px"
           class="pa-0 d-flex align-center"
-          min-height="600"
+          min-height="900"
         >
           <v-container fill-height class="pa-0 ma-0">
             <v-row class="ma-0 pa-0 d-flex align-self-stretch align-center">
-              <v-col cols="12" class="align-self-end px-10">
+              <v-col cols="12" class="align-self-end pa-0 px-10 mx-5">
                 <v-card flat>
                   <p
                     class="display-3 .font-weight-thin text-sm-right grey--text text--darken-2"
@@ -21,8 +21,8 @@
               </v-col>
               <v-col cols="12" class="pa-0 align-self-start">
                 <v-row class="ma-auto">
-                  <v-col cols="0" md="3"></v-col>
-                  <v-col cols="4" md="4">
+                  <v-col cols="1" md="3"></v-col>
+                  <v-col cols="5" md="4" class="px-5">
                     <v-card flat>
                       <v-menu
                         offset-y
@@ -78,7 +78,17 @@
                       </v-menu>
                     </v-card>
                   </v-col>
-                  <v-col cols="12" md="5" class="pl-10">
+                  <v-col
+                    cols="6"
+                    md="0"
+                    v-show="!$vuetify.breakpoint.mdAndUp"
+                  ></v-col>
+                  <v-col
+                    cols="1"
+                    md="0"
+                    v-show="!$vuetify.breakpoint.mdAndUp"
+                  ></v-col>
+                  <v-col cols="8" md="5" class="px-5">
                     <v-card flat>
                       <v-menu
                         offset-y
@@ -145,95 +155,97 @@
       </v-col>
       <v-spacer></v-spacer>
       <v-col cols="12" md="5" class="pa-0 ma-0">
-        <v-slide-x-reverse-transition hide-on-leave>
-          <v-container
-            fluid
-            fill-height
-            v-show="appear"
-            v-bind:class="{ 'pa-0 ma-0 d-flex align-start': appear }"
-          >
-            <v-row>
-              <v-col cols="12"></v-col>
-              <v-col cols="12"></v-col>
-              <v-col cols="12"></v-col>
-              <v-col cols="12"></v-col>
-              <v-col cols="11" class="d-flex justify-end display-3">
-                {{ cityt }}
-              </v-col>
-              <v-col cols="1"></v-col>
-              <v-col cols="11" class="d-flex justify-end display-1">
-                {{ city_area }}
-              </v-col>
-              <v-col cols="1"></v-col>
-              <v-col cols="12">
-                <v-card
-                  flat
-                  class="display-4 d-flex justify-center ma-10 pa-10 mt-6 font-weight-light"
-                >
-                  {{ temp }}°C
-                </v-card>
-              </v-col>
+        <v-card flat class="pa-0" min-height="900">
+          <v-slide-x-reverse-transition hide-on-leave>
+            <v-container
+              fluid
+              fill-height
+              v-show="appear"
+              v-bind:class="{ 'pa-0 ma-0 d-flex align-start': appear }"
+            >
               <v-row>
-                <v-col cols="5" class="d-flex justify-end">
-                  <v-icon>
-                    mdi-thermometer-chevron-up
-                  </v-icon>
+                <v-col cols="12"></v-col>
+                <v-col cols="12"></v-col>
+                <v-col cols="12"></v-col>
+                <v-col cols="12"></v-col>
+                <v-col cols="11" class="d-flex justify-end display-3">
+                  {{ cityt }}
                 </v-col>
-                <v-col cols="2">
-                  <span>
-                    max_temp :
-                  </span>
+                <v-col cols="1"></v-col>
+                <v-col cols="11" class="d-flex justify-end display-1">
+                  {{ city_area }}
                 </v-col>
-                <v-col cols="2" class="d-flex justify-start">
-                  <span>{{ d_tx }}</span>
+                <v-col cols="1"></v-col>
+                <v-col cols="12">
+                  <v-card
+                    flat
+                    class="display-4 d-flex justify-center ma-10 pa-10 mt-6 font-weight-light"
+                  >
+                    {{ temp }}°C
+                  </v-card>
                 </v-col>
-                <v-col cols="3"> </v-col>
-                <v-col cols="5" class="d-flex justify-end">
-                  <v-icon>
-                    mdi-thermometer-chevron-down
-                  </v-icon>
-                </v-col>
-                <v-col cols="2">
-                  <span>
-                    min_temp :
-                  </span>
-                </v-col>
-                <v-col cols="2" class="d-flex justify-start">
-                  <span>{{ d_tn }}</span>
-                </v-col>
-                <v-col cols="3"> </v-col>
-                <v-col cols="5" class="d-flex justify-end">
-                  <v-icon>
-                    mdi-water-outline
-                  </v-icon>
-                </v-col>
-                <v-col cols="2">
-                  <span>
-                    rv_humd :
-                  </span>
-                </v-col>
-                <v-col cols="2" class="d-flex justify-start">
-                  <span>{{ humd }}</span>
-                </v-col>
-                <v-col cols="3"> </v-col>
-                <v-col cols="5" class="d-flex justify-end">
-                  <v-icon>
-                    mdi-weather-pouring
-                  </v-icon>
-                </v-col>
-                <v-col cols="2">
-                  <span>
-                    pop :
-                  </span>
-                </v-col>
-                <v-col cols="2" class="d-flex justify-start">
-                  <span>{{ pop }}% </span>
-                </v-col>
-                <v-col cols="3"> </v-col>
+                <v-row>
+                  <v-col cols="4" md="5" class="d-flex justify-end">
+                    <v-icon>
+                      mdi-thermometer-chevron-up
+                    </v-icon>
+                  </v-col>
+                  <v-col cols="3" md="2">
+                    <span>
+                      max_temp :
+                    </span>
+                  </v-col>
+                  <v-col cols="2" class="d-flex justify-start">
+                    <span>{{ d_tx }}</span>
+                  </v-col>
+                  <v-col cols="3"> </v-col>
+                  <v-col cols="4" md="5" class="d-flex justify-end">
+                    <v-icon>
+                      mdi-thermometer-chevron-down
+                    </v-icon>
+                  </v-col>
+                  <v-col cols="3" md="2">
+                    <span>
+                      min_temp :
+                    </span>
+                  </v-col>
+                  <v-col cols="2" class="d-flex justify-start">
+                    <span>{{ d_tn }}</span>
+                  </v-col>
+                  <v-col cols="3"> </v-col>
+                  <v-col cols="4" md="5" class="d-flex justify-end">
+                    <v-icon>
+                      mdi-water-outline
+                    </v-icon>
+                  </v-col>
+                  <v-col cols="3" md="2">
+                    <span>
+                      rv_humd :
+                    </span>
+                  </v-col>
+                  <v-col cols="2" class="d-flex justify-start">
+                    <span>{{ humd }}</span>
+                  </v-col>
+                  <v-col cols="3"> </v-col>
+                  <v-col cols="4" md="5" class="d-flex justify-end">
+                    <v-icon>
+                      mdi-weather-pouring
+                    </v-icon>
+                  </v-col>
+                  <v-col cols="3" md="2">
+                    <span>
+                      pop :
+                    </span>
+                  </v-col>
+                  <v-col cols="2" class="d-flex justify-start">
+                    <span>{{ pop }}% </span>
+                  </v-col>
+                  <v-col cols="3"> </v-col>
+                </v-row>
               </v-row>
-            </v-row>
-          </v-container>
-        </v-slide-x-reverse-transition>
+            </v-container>
+          </v-slide-x-reverse-transition>
+        </v-card>
       </v-col>
     </v-row>
   </v-container>
@@ -255,7 +267,7 @@ export default {
     d_tx: 0,
     d_tn: 0,
     temp: 0,
-    pop: 0
+    pop: 0,
   }),
   methods: {
     set() {
