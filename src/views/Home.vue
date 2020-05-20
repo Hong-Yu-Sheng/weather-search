@@ -23,10 +23,9 @@
       <v-col cols="6" class="d-flex justify-center align-center">
         <v-card
           color="purple"
-          depressed
-          to="/tmp"
-          height="500"
-          width="700"
+          to="tmp"
+          height="200"
+          width="300"
           class="d-flex justify-center align-center"
         >
           <v-row>
@@ -46,7 +45,5 @@
 <script>
 // @ is an alias to /src
 
-export default {
-  name: "Home",
-};
+
 </script>
